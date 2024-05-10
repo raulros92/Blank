@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Colors",
+        "settings": [
+            {
+            "id" : "bg",
+            "type": "color",
+            "label": "Background Color",
+            "default": "#FFFFFF"
+            },
+            {
+            "id" : "tc",
+            "type": "color",
+            "label": "Text Color",
+            "default": "#000000"
+            }
+        ]
+    },
+    {
+        "name": "Checkboxes",
+        "settings": [
+            {
+            "id" : "cb",
+            "type": "checkbox",
+            "label": "Check Box",
+            "default": true
+            }
+        ]
+    }
+]

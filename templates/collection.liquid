@@ -1,0 +1,49 @@
+{% paginate collections["mi-coleccion"].products by 3 %}
+
+<h1>
+    {{ collections["mi-coleccion"].title }}
+</h1>
+
+<select id="sort-by">
+    {% assign sort_by = collections["mi-coleccion"].sort_by | default: collections["mi-coleccion"].default_sort_by %}
+
+    {% for option in collections["mi-coleccion"].sort_options %}
+        <option value="{{ option.value }}" {% if option.value == sort_by %} selected="selected" {% endif %}>
+            {{ option.name }}
+        </option>
+    {% endfor %}
+</select>
+
+{% for product in collections["mi-coleccion"].products %}
+    {% render "product-item", product: product %}
+{% endfor %}
+
+{{ paginate | default_pagination }}
+{% endpaginate %}
+
+{% comment %} NO ME FUNCIONA EL SCRIPT, REVISAR {% endcomment %}
+<script>
+    Shopify.queryParams = {};
+
+    // Preserve existing query parameters in the URL when sorting
+    if (location.search.length) {
+        var params = location.search.substr(1).split('&');
+
+        for (var i = 0; i < params.length; i++) {
+            var keyValue = params[i].split('=');
+
+            if (keyValue.length) {
+                Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+            }
+        }
+    }   
+
+    // Update sort_by query parameter on select change
+    document.querySelector("#sort-by").addEventListener("change", function(e) {
+        var value = e.target.value;
+
+        Shopify.queryParams.sort_by = value;
+        location.search = new URLSearchParams(Shopify.queryParams).toString();
+    });
+
+</script>

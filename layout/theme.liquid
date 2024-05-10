@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+{% comment %} Injects scripts, plugins can add scripts to your theme via content_for_header {% endcomment %}
+
+    {{ content_for_header }}
+    
+    {{"style.css" | asset_url |  stylesheet_tag }}
+    {%section "header"%}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+</head>
+
+<body>
+
+{% comment %} Where all the template data will be plug in {% endcomment %}
+
+{{ content_for_layout}}
+
+<script src="{{ 'scripts.js' | asset_url }}" async></script>
+    
+</body>
+</html>

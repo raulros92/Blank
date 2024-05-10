@@ -1,0 +1,23 @@
+<header>
+
+    <h1 class="codingRaul">Coding with Raul</h1>
+
+    <h1 class ="shopName">{{shop.name}}</h1>
+
+    <!-- Main menu -->
+    <ul class ="mainMenu">
+        {% for link in linklists.main-menu.links -%}
+            {% comment %} The link_to filter creates an anchor tag with the specified title and URL {% endcomment %}
+            <li> {{link.title | link_to: link.url}} </li>
+        {%- endfor -%}
+    </ul>
+
+    <!-- Search bar -->
+    {% if settings.show_search %}
+    {{<form action="/search" method="get">
+        <input type="search" name="q" placeholder="Search" aria-label="Search">
+        <button type="submit">Search</button>
+    </form>}}
+    {% endif %}
+
+</header>

@@ -1,0 +1,22 @@
+{% comment %} Assets for imgs css and js files {% endcomment %}
+{% comment %} Config for global theme settings: setting.schema.json {% endcomment %}
+{% comment %} Layout the bones of the html pages: theme.liquid is required {% endcomment %}
+{% comment %} Locals is for translations {% endcomment %}
+{% comment %} Sections - partials that have settings {% endcomment %}
+{% comment %} Snippets - partials that can be added via theme customize page {% endcomment %}
+{% comment %} Templates - the pages: one for each page type {% endcomment %}
+
+<h1 class="h1ClickToRemove">Click To Remove</h1> 
+
+<h2>{{collections["mi-coleccion"].title}}</h2>
+
+<div class="miColeccion">
+{% for product in collections["mi-coleccion"].products %}
+    {% render "product-item", product: product %}
+{% endfor %}
+</div>
+
+
+
+{% comment %} <img src= "{{  'puppy.jpg' | asset_url }}" width="300" height="200"> {% endcomment %}
+
